@@ -1,3 +1,5 @@
+@import "/css/animation.css";
+
 * {
     margin: 0px;
     padding: 0px;
@@ -15,51 +17,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@keyframes showColor {
-    0% {
-        background-image: linear-gradient(
-            to left,
-            var(--searchRightColor),
-            var(--searchLeftColor) 0%
-        );
-    }
-    20% {
-        background-image: linear-gradient(
-            to left,
-            var(--searchRightColor),
-            var(--searchLeftColor) 10%
-        );
-    }
-    40% {
-        background-image: linear-gradient(
-            to left,
-            var(--searchRightColor),
-            var(--searchLeftColor) 20%
-        );
-    }
-    60% {
-        background-image: linear-gradient(
-            to left,
-            var(--searchRightColor),
-            var(--searchLeftColor) 30%
-        );
-    }
-    80% {
-        background-image: linear-gradient(
-            to left,
-            var(--searchRightColor),
-            var(--searchLeftColor) 40%
-        );
-    }
-    100% {
-        background-image: linear-gradient(
-            to left,
-            var(--searchRightColor),
-            var(--searchLeftColor) 90%
-        );
-    }
 }
 
 #app {
@@ -137,6 +94,6 @@ body {
     background-size: 80%;
 }
 
-.disitemBtn{
+.disitemBtn {
     display: none;
 }

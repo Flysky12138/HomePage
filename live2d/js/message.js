@@ -43,7 +43,8 @@ $(document).on("copy", function () {
 function initTips() {
     $.ajax({
         cache: true,
-        url: "https://cdn.jsdelivr.net/gh/Flysky12138/HomePage/live2d/message.json",
+        url:
+            "https://cdn.jsdelivr.net/gh/Flysky12138/HomePage/live2d/message.json",
         dataType: "json",
         success: function (result) {
             $.each(result.mouseover, function (index, tips) {
@@ -119,16 +120,15 @@ initTips();
             text =
                 '嗨！我是<span style="color:#0099cc;">「 血小板 」</span>欢迎使用本网站！';
     }
-    showMessage(text, 5000);
+    showMessage(text, 3000);
 })();
-
-window.setInterval(showHitokoto, 10000);
 
 function showHitokoto() {
     $.getJSON("https://v1.hitokoto.cn/", function (result) {
         showMessage(result.hitokoto, 5000);
     });
 }
+window.setInterval(showHitokoto, 10000);
 
 function showMessage(text, timeout) {
     if (Array.isArray(text))

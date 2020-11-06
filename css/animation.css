@@ -1,0 +1,44 @@
+@keyframes showColor {
+    0% {
+        background-image: linear-gradient(
+            to left,
+            var(--searchRightColor),
+            var(--searchLeftColor) 0%
+        );
+    }
+    20% {
+        background-image: linear-gradient(
+            to left,
+            var(--searchRightColor),
+            var(--searchLeftColor) 10%
+        );
+    }
+    40% {
+        background-image: linear-gradient(
+            to left,
+            var(--searchRightColor),
+            var(--searchLeftColor) 20%
+        );
+    }
+    60% {
+        background-image: linear-gradient(
+            to left,
+            var(--searchRightColor),
+            var(--searchLeftColor) 30%
+        );
+    }
+    80% {
+        background-image: linear-gradient(
+            to left,
+            var(--searchRightColor),
+            var(--searchLeftColor) 40%
+        );
+    }
+    100% {
+        background-image: linear-gradient(
+            to left,
+            var(--searchRightColor),
+            var(--searchLeftColor) 90%
+        );
+    }
+}
