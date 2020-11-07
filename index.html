@@ -6,7 +6,7 @@
         <title>Flysky</title>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
         <script src="https://cdn.jsdelivr.net/gh/jquery/jquery@3.2.1/dist/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Flysky12138/HomePage@latest/css/index.css" />
+        <link rel="stylesheet" href="/css/index.css" />
     </head>
 
     <body>
@@ -27,15 +27,16 @@
             <div class="box" :style="boxStyle">
                 <input
                     class="input"
-                    v-model="content"
+                    v-model="content.value"
                     @focus="getFocus"
                     @blur="loseFocus"
                     @keydown="keyDown"
                 />
                 <button class="btn" @click="goSearch"></button>
-                <div class="search" :style="searchStyle">
+                <div class="search">
                     <button
                         :class="['select',{checked: index==search.index}]"
+                        :style="selectStyle"
                         v-for="(item,index) in search.api"
                         :key="item.id"
                         @click="setIndex(index)"
@@ -45,10 +46,11 @@
                 </div>
             </div>
             <div
-                :class="['itemBtn',{disitemBtn: search.isShow}]"
+                class="itemBtn"
+                :style="itemBtnStyle"
                 @click="showSearch"
             ></div>
         </div>
-        <script src="https://cdn.jsdelivr.net/gh/Flysky12138/HomePage/js/index.js"></script>
+        <script src="/js/index.js"></script>
     </body>
 </html>

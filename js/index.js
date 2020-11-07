@@ -1,11 +1,15 @@
 new Vue({
     el: "#app",
     data: {
-        content: "",
+        content: {
+            first: true,
+            value: "",
+        },
         onFocus: false,
         search: {
             index: 0,
             isShow: false,
+            first: true,
             api: [
                 {
                     name: "谷歌",
@@ -28,17 +32,39 @@ new Vue({
     },
     computed: {
         boxStyle() {
-            styleObj = {};
-            if (this.content != "") {
-                styleObj["animation"] = "showColor 0.2s linear forwards";
+            let styleObj = {};
+            if (this.content.value != "") {
+                this.content.first = false;
+                styleObj["animation"] = "showColor 0.3s linear forwards";
+            } else if (!this.content.first) {
+                styleObj["animation"] = "-showColor 0.3s linear forwards";
             }
             if (this.onFocus) {
                 styleObj["box-shadow"] = "0px 0px 5px #BDBDBD";
             }
             return styleObj;
         },
-        searchStyle() {
-            return this.search.isShow ? "" : { display: "none" };
+        selectStyle() {
+            let styleObj = {};
+            if (this.search.isShow) {
+                styleObj["animation"] = "showBtn 0.3s linear forwards";
+            } else if (!this.search.first) {
+                styleObj["animation"] = "-showBtn 0.3s linear forwards";
+            } else {
+                styleObj["display"] = "none";
+            }
+            return styleObj;
+        },
+        itemBtnStyle() {
+            let styleObj = {};
+            if (!this.search.first) {
+                if (this.search.isShow) {
+                    styleObj["animation"] = "-showBtn 0.3s linear forwards";
+                } else {
+                    styleObj["animation"] = "showBtn 0.3s linear forwards";
+                }
+            }
+            return styleObj;
         },
     },
     created() {
@@ -57,25 +83,27 @@ new Vue({
         goSearch() {
             let reg0 = new RegExp(this.reg[0]);
             let reg1 = new RegExp(this.reg[1]);
-            if (this.content != "") {
-                if (reg0.test(this.content)) {
-                    window.location.href = this.content;
+            if (this.content.value != "") {
+                if (reg0.test(this.content.value)) {
+                    window.location.href = this.content.value;
                 }
-                if (reg1.test(this.content)) {
-                    window.location.href = "http://" + this.content;
+                if (reg1.test(this.content.value)) {
+                    window.location.href = "http://" + this.content.value;
                 } else {
                     window.location.href =
-                        this.search.api[this.search.index].url + this.content;
+                        this.search.api[this.search.index].url +
+                        this.content.value;
                 }
-                this.content = "";
+                this.content.value = "";
             }
         },
-        keyDown() {
+        keyDown(event) {
             if (event.keyCode == 13) {
                 this.goSearch();
             }
         },
         showSearch() {
+            this.search.first = false;
             this.search.isShow = !this.search.isShow;
             setTimeout(() => {
                 this.search.isShow = false;

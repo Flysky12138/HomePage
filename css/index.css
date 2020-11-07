@@ -1,4 +1,4 @@
-@import "https://cdn.jsdelivr.net/gh/Flysky12138/HomePage@latest/css/animation.css";
+@import "/css/animation.css";
 
 * {
     margin: 0px;
@@ -79,7 +79,6 @@ body {
     text-align: center;
     color: var(--textColor);
     background-color: var(--searchLeftColor);
-    animation: showBtn 0.2s linear forwards;
 }
 
 .checked {
@@ -97,8 +96,4 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
-}
-
-.disitemBtn {
-    display: none;
 }
