@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Flysky - QQ2797299614</title>
+        <title>Flysky</title>
         <link rel="stylesheet" href="/css/index.css" />
         <script src="/js/vue.js"></script>
         <script type="text/javascript" src="/js/jquery.min.js"></script>
@@ -23,24 +23,26 @@
             loadlive2d("live2d", "/live2d/model/tia/model.json");
         </script>
         <!-- vue -->
-        <div id="app" :style="appStyle">
-            <input
-                class="input"
-                v-model="content"
-                @focus="getFocus"
-                @blur="loseFocus"
-                @keydown="keyDown"
-            />
-            <button class="btn" @click="goSearch"></button>
-            <div class="search" :style="searchStyle">
-                <button
-                    :class="['select',{checked: index==search.index}]"
-                    v-for="(item,index) in search.api"
-                    :key="item.id"
-                    @click="setIndex(index)"
-                >
-                    {{item.name}}
-                </button>
+        <div id="app">
+            <div class="box" :style="appStyle">
+                <input
+                    class="input"
+                    v-model="content"
+                    @focus="getFocus"
+                    @blur="loseFocus"
+                    @keydown="keyDown"
+                />
+                <button class="btn" @click="goSearch"></button>
+                <div class="search" :style="searchStyle">
+                    <button
+                        :class="['select',{checked: index==search.index}]"
+                        v-for="(item,index) in search.api"
+                        :key="item.id"
+                        @click="setIndex(index)"
+                    >
+                        {{item.name}}
+                    </button>
+                </div>
             </div>
             <div
                 :class="['itemBtn',{disitemBtn: search.isShow}]"
