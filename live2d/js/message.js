@@ -43,8 +43,7 @@ $(document).on("copy", function () {
 function initTips() {
     $.ajax({
         cache: true,
-        url:
-            "https://cdn.jsdelivr.net/gh/Flysky12138/HomePage/live2d/message.json",
+        url: "/live2d/message.json",
         dataType: "json",
         success: function (result) {
             $.each(result.mouseover, function (index, tips) {
