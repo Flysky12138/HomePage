@@ -27,7 +27,7 @@ new Vue({
         ],
     },
     computed: {
-        appStyle() {
+        boxStyle() {
             styleObj = {};
             if (this.content != "") {
                 styleObj["animation"] = "showColor 0.2s linear forwards";
