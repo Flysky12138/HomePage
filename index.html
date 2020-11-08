@@ -25,10 +25,7 @@
         <!-- vue -->
         <div id="app">
             <div class="box" :style="boxStyle">
-                <div
-                    class="icon"
-                    :style="iconStyle"
-                ></div>
+                <div class="icon" :style="iconStyle"></div>
                 <input
                     class="input"
                     v-model="content.value"
@@ -44,6 +41,7 @@
                         v-for="(item,index) in search.api"
                         :key="item.id"
                         @click="setIndex(index)"
+                        @touchend.prevent="setIndex(index)"
                     >
                         {{item.name}}
                     </button>
@@ -53,6 +51,7 @@
                 class="itemBtn"
                 :style="itemBtnStyle"
                 @click="showSearch"
+                @touchend.prevent="showSearch"
             ></div>
         </div>
         <script src="/js/index.js"></script>
