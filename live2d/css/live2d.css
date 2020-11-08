@@ -9,10 +9,13 @@
 }
 
 #live2d {
+    width: 350px;
+    height: 300px;
     position: relative;
 }
 
 .message {
+    width: 350px;
     pointer-events: none;
     user-select: none;
     opacity: 0;
@@ -72,17 +75,6 @@
     }
     .message {
         width: 180px;
-    }
-}
-
-/* 电脑 */
-@media screen and (min-width: 500px) {
-    #live2d {
-        width: 350px;
-        height: 300px;
-    }
-    .message {
-        width: 350px;
     }
 }
 

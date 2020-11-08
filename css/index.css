@@ -10,14 +10,13 @@
     --textColor: #9e9e9e;
 }
 
-html {
+html,
+body {
     width: 100%;
     height: 100%;
 }
 
 body {
-    width: 100%;
-    height: 100%;
     position: absolute;
     display: flex;
     justify-content: center;
@@ -46,12 +45,18 @@ body {
 .icon {
     width: 80%;
     max-width: 400px;
-    height: 20vh;
+    height: 147px;
     position: absolute;
-    top: -20vh;
+    bottom: 8vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 80%;
+}
+
+@media screen and (max-width: 500px) {
+    .icon {
+        bottom: 5vh;
+    }
 }
 
 .input {
@@ -80,7 +85,7 @@ body {
 
 .search {
     width: 100%;
-    height: 10vh;
+    height: 80px;
     position: absolute;
     top: 50px;
     display: flex;
