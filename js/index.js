@@ -95,7 +95,7 @@ new Vue({
         goSearch(res) {
             let reg0 = new RegExp(this.reg[0]);
             let reg1 = new RegExp(this.reg[1]);
-            if (res != "") {
+            if (res != undefined) {
                 if (reg0.test(res)) {
                     window.location.href = res;
                 }
