@@ -114,9 +114,11 @@ new Vue({
             }
         },
         showSearch() {
+            this.getSugdata.value = [];
             this.search.isShow = !this.search.isShow;
             setTimeout(() => {
                 this.search.isShow = false;
+                this.getSug();
             }, 3000);
         },
         setIndex(res) {
