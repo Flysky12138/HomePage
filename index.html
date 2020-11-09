@@ -23,9 +23,13 @@
             loadlive2d("live2d", "/live2d/model/tia/model.json");
         </script>
         <!-- vue -->
-        <div id="app">
-            <div class="box" :style="boxStyle">
+        <div id="app" v-cloak>
+            <!-- 图片 -->
+            <div class="img">
                 <div class="icon" :style="iconStyle"></div>
+            </div>
+            <!-- 搜索框 -->
+            <div class="box" :style="boxStyle">
                 <input
                     class="input"
                     v-model="content.value"
@@ -33,26 +37,41 @@
                     @blur="loseFocus"
                     @keydown="keyDown"
                 />
-                <button class="btn" @click="goSearch"></button>
-                <div class="search">
-                    <button
-                        :class="['select',{checked: index==search.index}]"
-                        :style="selectStyle"
-                        v-for="(item,index) in search.api"
-                        :key="item.id"
-                        @click="setIndex(index)"
-                        @touchend.prevent="setIndex(index)"
-                    >
-                        {{item.name}}
-                    </button>
-                </div>
+                <button class="btn" @click="goSearch(content.value)"></button>
             </div>
-            <div
-                class="itemBtn"
-                :style="itemBtnStyle"
-                @click="showSearch"
-                @touchend.prevent="showSearch"
-            ></div>
+            <!-- 搜索提示 -->
+            <transition-group class="sug" name="sug" tag="div">
+                <button
+                    class="sugitem"
+                    v-for="(item,index) in getSugdata.value"
+                    :key="index"
+                    @click="goSearch(item)"
+                >
+                    {{item}}
+                </button>
+            </transition-group>
+            <!-- 搜索引擎选项 -->
+            <transition-group class="search" name="search" tag="div">
+                <button
+                    :class="['select',{'select-checked': index==search.index}]"
+                    v-show="search.isShow"
+                    v-for="(item,index) in search.api"
+                    :key="index"
+                    @click="setIndex(index)"
+                    @touchend.prevent="setIndex(index)"
+                >
+                    {{item.name}}
+                </button>
+            </transition-group>
+            <!-- 显示隐藏搜索引擎选项按键 -->
+            <transition name="itemBtn">
+                <div
+                    class="itemBtn"
+                    v-show="!search.isShow"
+                    @click="showSearch"
+                    @touchend.prevent="showSearch"
+                ></div>
+            </transition>
         </div>
         <script src="/js/index.js"></script>
     </body>

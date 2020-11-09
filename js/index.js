@@ -9,7 +9,6 @@ new Vue({
         search: {
             index: 0,
             isShow: false,
-            first: true,
             api: [
                 {
                     name: "谷歌",
@@ -40,6 +39,7 @@ new Vue({
         getSugdata: {
             getSugdelay: 0,
             value: [],
+            valueLength: 10,
         },
         reg: [
             "^(http(s)?://){1}[\\s\\S]*$",
@@ -53,6 +53,8 @@ new Vue({
                 this.getSugdata.getSugdelay = setTimeout(() => {
                     this.getSug();
                 }, 800);
+            } else {
+                this.getSugdata.value = [];
             }
         },
     },
@@ -76,28 +78,6 @@ new Vue({
             }
             return styleObj;
         },
-        selectStyle() {
-            let styleObj = {};
-            if (this.search.isShow) {
-                styleObj["animation"] = "showBtn 0.3s linear forwards";
-            } else if (!this.search.first) {
-                styleObj["animation"] = "-showBtn 0.3s linear forwards";
-            } else {
-                styleObj["display"] = "none";
-            }
-            return styleObj;
-        },
-        itemBtnStyle() {
-            let styleObj = {};
-            if (!this.search.first) {
-                if (this.search.isShow) {
-                    styleObj["animation"] = "-showBtn 0.3s linear forwards";
-                } else {
-                    styleObj["animation"] = "showBtn 0.3s linear forwards";
-                }
-            }
-            return styleObj;
-        },
     },
     created() {
         let localindex = localStorage.getItem("index");
@@ -112,19 +92,18 @@ new Vue({
         loseFocus() {
             this.onFocus = false;
         },
-        goSearch() {
+        goSearch(res) {
             let reg0 = new RegExp(this.reg[0]);
             let reg1 = new RegExp(this.reg[1]);
-            if (this.content.value != "") {
-                if (reg0.test(this.content.value)) {
-                    window.location.href = this.content.value;
+            if (res != "") {
+                if (reg0.test(res)) {
+                    window.location.href = res;
                 }
-                if (reg1.test(this.content.value)) {
-                    window.location.href = "http://" + this.content.value;
+                if (reg1.test(res)) {
+                    window.location.href = "http://" + res;
                 } else {
                     window.location.href =
-                        this.search.api[this.search.index].url +
-                        this.content.value;
+                        this.search.api[this.search.index].url + res;
                 }
                 this.content.value = "";
             }
@@ -135,7 +114,6 @@ new Vue({
             }
         },
         showSearch() {
-            this.search.first = false;
             this.search.isShow = !this.search.isShow;
             setTimeout(() => {
                 this.search.isShow = false;
@@ -166,6 +144,13 @@ new Vue({
                         data.s.forEach((res) => {
                             that.getSugdata.value.push(res);
                         });
+                    }
+                    if (
+                        that.getSugdata.value.length >
+                        that.getSugdata.valueLength
+                    ) {
+                        that.getSugdata.value.length =
+                            that.getSugdata.valueLength;
                     }
                 },
             };
