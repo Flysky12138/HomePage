@@ -52,7 +52,7 @@ new Vue({
             if (newValue != "") {
                 this.getSugdata.getSugdelay = setTimeout(() => {
                     this.getSug();
-                }, 800);
+                }, 500);
             } else {
                 this.getSugdata.value = [];
             }
