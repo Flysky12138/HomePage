@@ -110,7 +110,7 @@ new Vue({
         },
         keyDown(event) {
             if (event.keyCode == 13) {
-                this.goSearch();
+                this.goSearch(this.content.value);
             }
         },
         showSearch() {
