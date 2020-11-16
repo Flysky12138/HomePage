@@ -7,7 +7,7 @@ new Vue({
         },
         onFocus: false,
         search: {
-            index: 0,
+            index: 1,
             isShow: false,
             api: [
                 {
@@ -48,6 +48,7 @@ new Vue({
     },
     watch: {
         "content.value"(newValue, oldValue) {
+            this.search.isShow = false;
             clearTimeout(this.getSugdata.getSugdelay);
             if (newValue != "") {
                 this.getSugdata.getSugdelay = setTimeout(() => {
@@ -95,7 +96,7 @@ new Vue({
         goSearch(res) {
             let reg0 = new RegExp(this.reg[0]);
             let reg1 = new RegExp(this.reg[1]);
-            if (res != undefined) {
+            if (res != undefined && res != "") {
                 if (reg0.test(res)) {
                     window.location.href = res;
                 }

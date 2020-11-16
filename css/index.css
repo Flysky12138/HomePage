@@ -22,16 +22,6 @@
     --textColor: #9e9e9e;
 }
 
-.record {
-    font-size: 10px;
-    position: absolute;
-    bottom: 10px;
-}
-.record a {
-    color: var(--textColor);
-    text-decoration: none;
-}
-
 html,
 body {
     width: 100%;
