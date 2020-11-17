@@ -99,8 +99,7 @@ new Vue({
             if (res != undefined && res != "") {
                 if (reg0.test(res)) {
                     window.location.href = res;
-                }
-                if (reg1.test(res)) {
+                } else if (reg1.test(res)) {
                     window.location.href = "http://" + res;
                 } else {
                     window.location.href =
