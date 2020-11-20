@@ -1,7 +1,7 @@
 @import "/css/animation.css";
 
 [v-cloak] {
-    display: none;
+    display: none !important;
 }
 
 /* 血小板点击穿透 */
