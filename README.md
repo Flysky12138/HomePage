@@ -1,1 +1,1 @@
-## [预览地址](https://index.flysky.xyz)
+## [预览地址](https://home.flysky.xyz)
